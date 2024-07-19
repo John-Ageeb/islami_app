@@ -1,7 +1,5 @@
-import 'dart:ffi';
-import "dart:ui";
 
-import 'package:flutter/material.dart';
+
 
 abstract class AppAssets {
   static String defaultPath = "assets/images/";

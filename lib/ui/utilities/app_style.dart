@@ -1,4 +1,5 @@
 import "dart:ui";
+
 import "app_colors.dart";
 
 abstract class AppStyle {
