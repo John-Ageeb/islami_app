@@ -11,32 +11,49 @@ class Quran extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         buildHeadrImage(),
-        buildDivider(),
-        Row(
-          children: [
-            Expanded(
-              child: Text(
-                "Soura Name",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.accent),
+        Expanded(
+          flex: 7,
+          child: Stack(
+            alignment: AlignmentDirectional.center,
+            children: [
+              Column(
+                children: [
+                  buildDivider(),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          "Soura Name",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.accent),
+                        ),
+                      ),
+                      Expanded(
+                          child: Text(
+                        "Verses Number",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w400,
+                            color: AppColors.accent),
+                      )),
+                    ],
+                  ),
+                  buildDivider(),
+                  buildSourasList(),
+                ],
               ),
-            ),
-            Expanded(
-                child: Text(
-              "Verses Number",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.accent),
-            )),
-          ],
-        ),
-        buildDivider(),
-        buildSourasList()
+              VerticalDivider(
+                color: AppColors.primary,
+                thickness: 3,
+                indent: 7,
+              )
+            ],
+          ),
+        )
       ],
     );
   }
@@ -75,7 +92,7 @@ class Quran extends StatelessWidget {
   }
 
   Divider buildDivider() => Divider(
-        color: AppColors.accent,
+        color: AppColors.primary,
         thickness: 3,
       );
 
