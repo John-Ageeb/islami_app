@@ -4,7 +4,11 @@ import '../utilities/app_assets.dart';
 import '../utilities/app_colors.dart';
 
 class AppScaffold extends StatelessWidget {
-  const AppScaffold({super.key});
+  Widget? body;
+  String? appBarTitel;
+  Widget? bottonNavigationBar;
+
+  AppScaffold({this.body, this.appBarTitel, this.bottonNavigationBar});
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +18,15 @@ class AppScaffold extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.transparent,
         appBar: buildAppBar(),
-        bottomNavigationBar: buildButtonNavigtion(),
-        body: tabs[selectedTabIndix],
+        bottomNavigationBar: bottonNavigationBar,
+        body: body,
       ),
     );
     ;
   }
-
   AppBar buildAppBar() => AppBar(
         title: Text(
-          "Islami",
+          appBarTitel ?? "",
           style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.w700,

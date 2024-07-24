@@ -4,6 +4,7 @@ import 'package:islami2/ui/screens/home/tabs/myradio/myradio.dart';
 import 'package:islami2/ui/screens/home/tabs/quran/quran.dart';
 import 'package:islami2/ui/screens/home/tabs/sebha/sebha.dart';
 import 'package:islami2/ui/utilities/app_assets.dart';
+import 'package:islami2/ui/widgets/app_scaffold.dart';
 
 import '../../utilities/app_colors.dart';
 
@@ -19,15 +20,10 @@ class _HomeState extends State<Home> {
   List<Widget> tabs = [Quran(), Ahadeth(), MyRadio(), Sebha()];
 
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage(AppAssets.background))),
-      child: Scaffold(
-        backgroundColor: AppColors.transparent,
-        appBar: buildAppBar(),
-        bottomNavigationBar: buildButtonNavigtion(),
-        body: tabs[selectedTabIndix],
-      ),
+    return AppScaffold(
+      appBarTitel: "Islami",
+      body: tabs[selectedTabIndix],
+      bottonNavigationBar: buildButtonNavigtion(),
     );
   }
 
@@ -57,17 +53,4 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
-  AppBar buildAppBar() => AppBar(
-        title: Text(
-          "Islami",
-          style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.w700,
-              color: AppColors.accent),
-        ),
-        centerTitle: true,
-        backgroundColor: AppColors.transparent,
-        elevation: 0,
-      );
 }
