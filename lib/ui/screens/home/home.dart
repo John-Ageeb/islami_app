@@ -3,6 +3,7 @@ import 'package:islami2/ui/screens/home/tabs/ahadeth/ahadeth.dart';
 import 'package:islami2/ui/screens/home/tabs/myradio/myradio.dart';
 import 'package:islami2/ui/screens/home/tabs/quran/quran.dart';
 import 'package:islami2/ui/screens/home/tabs/sebha/sebha.dart';
+import 'package:islami2/ui/screens/home/tabs/setting/setting.dart';
 import 'package:islami2/ui/utilities/app_assets.dart';
 import 'package:islami2/ui/widgets/app_scaffold.dart';
 
@@ -16,8 +17,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int selectedTabIndix = 0;
-  List<Widget> tabs = [Quran(), Ahadeth(), MyRadio(), Sebha()];
+  int selectedTabIndix = 4;
+  List<Widget> tabs = [Quran(), Ahadeth(), MyRadio(), Sebha(), Setting()];
 
   Widget build(BuildContext context) {
     return AppScaffold(
@@ -48,7 +49,8 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
               icon: ImageIcon(AssetImage(AppAssets.icRadio)), label: "Radio"),
           BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage(AppAssets.icSebha)), label: "Sebha")
+              icon: ImageIcon(AssetImage(AppAssets.icSebha)), label: "Sebha"),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Setting"),
         ],
       ),
     );

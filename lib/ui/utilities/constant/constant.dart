@@ -1,4 +1,6 @@
 abstract class Constants {
+  static String hadethFilePath = "assets/files/a/a.txt";
+
   static const List<String> suraNames = [
     "الفاتحه",
     "البقرة",
@@ -231,4 +233,6 @@ abstract class Constants {
     5,
     6
   ];
+  static List<String> ahadethTitelList =
+      List.generate(50, (index) => "الحديث رقم${index + 1}  ");
 }
