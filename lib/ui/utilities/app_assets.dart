@@ -13,4 +13,6 @@ abstract class AppAssets {
   static String quranTabLogo = "${defaultPath}Screenshot (1).png";
   static String ahadethTabLogo =
       "${defaultPath}59253-quran-basmala-islamic-kufic-arabic-calligraphy-icon.png";
+  static String sebhaBody = "${defaultPath}body_sebha_logo.png";
+  static String sebhaHead = "${defaultPath}head_sebha_logo.png";
 }

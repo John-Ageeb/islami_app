@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami2/ui/providers/language_providers.dart';
 
 import '../../../../utilities/app_colors.dart';
 
@@ -8,10 +10,8 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
-  String selectedLanugauge = "en";
-
   bool isDarkThemeEnabled = false;
-
+  LanguageProvider provider = LanguageProvider();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,7 +19,7 @@ class _SettingState extends State<Setting> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text("Language",
+          Text(AppLocalizations.of(context)!.language,
               style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.w400,
@@ -31,7 +31,7 @@ class _SettingState extends State<Setting> {
           Row(
             children: [
               Text(
-                "Theme",
+                AppLocalizations.of(context)!.theme,
                 style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.w400,
@@ -47,7 +47,7 @@ class _SettingState extends State<Setting> {
   }
 
   Widget buildLanguageMenu() => DropdownButton(
-        value: selectedLanugauge, // defult value
+        value: provider.selectedLanguage, // defult value
         isExpanded: true,
         items: [
           DropdownMenuItem<String>(value: "ar", child: Text("العربية")),
@@ -55,12 +55,13 @@ class _SettingState extends State<Setting> {
           DropdownMenuItem<String>(value: "en", child: Text("English")),
         ],
         onChanged: (newValue) {
-          selectedLanugauge = newValue ?? selectedLanugauge;
+          provider.selectedLanguage = newValue ?? provider.selectedLanguage;
           setState(() {});
         },
       );
 
   Widget buildThemeSwitch() => Switch(
+      activeColor: AppColors.primary,
       value: isDarkThemeEnabled,
       onChanged: (newValue) {
         isDarkThemeEnabled = newValue;

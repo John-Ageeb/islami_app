@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami2/ui/screens/home/tabs/ahadeth/ahadeth.dart';
 import 'package:islami2/ui/screens/home/tabs/myradio/myradio.dart';
 import 'package:islami2/ui/screens/home/tabs/quran/quran.dart';
 import 'package:islami2/ui/screens/home/tabs/sebha/sebha.dart';
 import 'package:islami2/ui/screens/home/tabs/setting/setting.dart';
 import 'package:islami2/ui/utilities/app_assets.dart';
+import 'package:islami2/ui/utilities/extensions.dart';
 import 'package:islami2/ui/widgets/app_scaffold.dart';
 
 import '../../utilities/app_colors.dart';
@@ -17,12 +19,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int selectedTabIndix = 4;
+  int selectedTabIndix = 3;
   List<Widget> tabs = [Quran(), Ahadeth(), MyRadio(), Sebha(), Setting()];
 
   Widget build(BuildContext context) {
     return AppScaffold(
-      appBarTitel: "Islami",
+      appBarTitel: context.localization.islami,
       body: tabs[selectedTabIndix],
       bottonNavigationBar: buildButtonNavigtion(),
     );
@@ -50,7 +52,9 @@ class _HomeState extends State<Home> {
               icon: ImageIcon(AssetImage(AppAssets.icRadio)), label: "Radio"),
           BottomNavigationBarItem(
               icon: ImageIcon(AssetImage(AppAssets.icSebha)), label: "Sebha"),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Setting"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: AppLocalizations.of(context)!.setting),
         ],
       ),
     );
