@@ -19,7 +19,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int selectedTabIndix = 3;
+  int selectedTabIndix = 4;
   List<Widget> tabs = [Quran(), Ahadeth(), MyRadio(), Sebha(), Setting()];
 
   Widget build(BuildContext context) {

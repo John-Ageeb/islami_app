@@ -8,6 +8,8 @@ import 'package:islami2/ui/screens/splash/splash_screen.dart';
 import 'package:islami2/ui/screens/sura_details/sura_details.dart';
 import 'package:provider/provider.dart';
 
+/// if we need to add a multi provider, we can add ChangeNotifierProvider inside ChangeNotifierProvider.
+
 void main() {
   runApp(ChangeNotifierProvider(
       create: (context) => LanguageProvider(), child: MyApp()));

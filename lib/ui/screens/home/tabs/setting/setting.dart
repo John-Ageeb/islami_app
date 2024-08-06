@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami2/ui/providers/language_providers.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../utilities/app_colors.dart';
 
@@ -11,9 +12,11 @@ class Setting extends StatefulWidget {
 
 class _SettingState extends State<Setting> {
   bool isDarkThemeEnabled = false;
-  LanguageProvider provider = LanguageProvider();
+  late LanguageProvider provider;
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of(context);
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -56,6 +59,8 @@ class _SettingState extends State<Setting> {
         ],
         onChanged: (newValue) {
           provider.selectedLanguage = newValue ?? provider.selectedLanguage;
+          provider
+              .notifyListeners(); // any one notifiy provider will be rebuild
           setState(() {});
         },
       );
