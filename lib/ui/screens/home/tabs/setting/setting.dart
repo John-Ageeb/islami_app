@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami2/ui/providers/language_providers.dart';
+import 'package:islami2/ui/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../utilities/app_colors.dart';
@@ -12,11 +13,12 @@ class Setting extends StatefulWidget {
 
 class _SettingState extends State<Setting> {
   bool isDarkThemeEnabled = false;
-  late LanguageProvider provider;
+  late LanguageProvider langProvider;
+  late ThemeProvider themProvider;
   @override
   Widget build(BuildContext context) {
-    provider = Provider.of(context);
-
+    langProvider = Provider.of(context);
+    themProvider = Provider.of(context);
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -50,7 +52,7 @@ class _SettingState extends State<Setting> {
   }
 
   Widget buildLanguageMenu() => DropdownButton(
-        value: provider.selectedLanguage, // defult value
+        value: langProvider.selectedLanguage, // defult value
         isExpanded: true,
         items: [
           DropdownMenuItem<String>(value: "ar", child: Text("العربية")),
@@ -58,8 +60,9 @@ class _SettingState extends State<Setting> {
           DropdownMenuItem<String>(value: "en", child: Text("English")),
         ],
         onChanged: (newValue) {
-          provider.selectedLanguage = newValue ?? provider.selectedLanguage;
-          provider
+          langProvider.selectedLanguage =
+              newValue ?? langProvider.selectedLanguage;
+          langProvider
               .notifyListeners(); // any one notifiy provider will be rebuild
           setState(() {});
         },
@@ -67,9 +70,9 @@ class _SettingState extends State<Setting> {
 
   Widget buildThemeSwitch() => Switch(
       activeColor: AppColors.primary,
-      value: isDarkThemeEnabled,
+      value: themProvider.isDarkThemeEnabled,
       onChanged: (newValue) {
-        isDarkThemeEnabled = newValue;
+        themProvider.newTheme = newValue ? ThemeMode.dark : ThemeMode.light;
         setState(() {});
       });
 }

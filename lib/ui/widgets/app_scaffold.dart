@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:islami2/ui/providers/theme_provider.dart';
+import 'package:provider/provider.dart';
 
-import '../utilities/app_assets.dart';
 import '../utilities/app_colors.dart';
 
 class AppScaffold extends StatelessWidget {
@@ -10,11 +11,15 @@ class AppScaffold extends StatelessWidget {
 
   AppScaffold({this.body, this.appBarTitel, this.bottonNavigationBar});
 
+  late ThemeProvider themeProvider;
+
   @override
   Widget build(BuildContext context) {
+    themeProvider = Provider.of(context);
     return Container(
       decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage(AppAssets.background))),
+          image:
+              DecorationImage(image: AssetImage(themeProvider.mainBackground))),
       child: Scaffold(
         backgroundColor: AppColors.transparent,
         appBar: buildAppBar(),
@@ -27,13 +32,6 @@ class AppScaffold extends StatelessWidget {
   AppBar buildAppBar() => AppBar(
         title: Text(
           appBarTitel ?? "",
-          style: TextStyle(
-              fontSize: 30,
-              fontWeight: FontWeight.w700,
-              color: AppColors.accent),
         ),
-        centerTitle: true,
-        backgroundColor: AppColors.transparent,
-        elevation: 0,
       );
 }

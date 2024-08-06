@@ -15,4 +15,8 @@ abstract class AppAssets {
       "${defaultPath}59253-quran-basmala-islamic-kufic-arabic-calligraphy-icon.png";
   static String sebhaBody = "${defaultPath}body_sebha_logo.png";
   static String sebhaHead = "${defaultPath}head_sebha_logo.png";
+
+  /// dark mode
+  static String splashDark = "${defaultPath}splash_dark.png";
+  static String backgroundDark = "${defaultPath}dark_bg.png";
 }
